@@ -46,7 +46,7 @@ function dateTime(timestamp) {
   }
   
   
-  return `${day}, ${month} ${dateToday}, ${year} 🌎 ${hours}:${minutes}`;
+  return `${day}, ${month} ${dateToday}, ${year} 🌎 Last Updated: ${hours}:${minutes}`;
 }
 
 function getTemperature(response) {

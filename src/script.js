@@ -1,13 +1,32 @@
 // api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 //01a738ffcc406d9b10304ab407495deb
 
-// select city
+// change city
+
+// change temp
 
 function getTemperature(response) {
-  console.log(response);
+  let currentTemp = document.querySelector("#temp");
+  currentTemp.innerHTML = Math.round(response.data.main.temp);
 }
-let apiKey = `01a738ffcc406d9b10304ab407495deb`;
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${apiKey}&units=metric`;
+function getCity(event) {
+  event.preventDefault();
+  let currentCity = document.querySelector("#city");
+  currentCity.innerHTML = `${currentCity.value}}`;
 
-console.log("tye");
-axios.get(apiUrl).then(getTemperature);
+  let apiKey = `01a738ffcc406d9b10304ab407495deb`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity.value}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(getTemperature);
+}
+
+// change city
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  let cityText = document.querySelector("#city");
+  cityText.innerHTML = `${cityInputElement.value}`;
+}
+
+let enterLocation = document.querySelector("#city-input-form");
+enterLocation.addEventListener("submit", handleSubmit);

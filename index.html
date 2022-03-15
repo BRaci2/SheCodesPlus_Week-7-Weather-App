@@ -22,12 +22,12 @@
 <!-- title -->
       <h1 class="header">What's the Weather?</h1>
 <!-- input city bar -->
-    <form class="input-bar" id="city-input">
-      <input type="text" placeholder="Enter Location..." autofocus />
+    <form class="input-bar" id="city-input-form">
+      <input type="text" placeholder="Enter Location..." autofocus id="city-input"/>
       <input type="submit" value="Search" />
     </form>
 <!-- current date & time -->
-    <div class="city">Helsinki</div>
+    <div class="city" id="city">Helsinki</div>
     <span>Monday, March 14, 2022 🌎</span>
     <span>08:00</span>
     <br/>
@@ -36,8 +36,9 @@
     <div class=row>
       <div class="col-4">
 
-        <div class="temp">22°</div>
-        <span>CELCIUS</span>
+        <span class="temp" id="temp">22</span>
+        <span class="temp">°</span>
+        <div>CELCIUS</div>
         <span>/ FARENHEIT</span>
 
       </div>

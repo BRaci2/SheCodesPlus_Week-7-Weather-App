@@ -8,12 +8,14 @@
 function getTemperature(response) {
   let currentTemp = document.querySelector("#temp");
   let currentCity = document.querySelector("#city");
+  let country = document.querySelector("#country");
   let description = document.querySelector("#description");
   let humidity = document.querySelector("#humidity");
   let windSpeed = document.querySelector("#wind-speed");
 
   currentTemp.innerHTML = Math.round(response.data.main.temp);
   currentCity.innerHTML = `${response.data.name}`;
+  country.innerHTML = `${response.data.sys.country}`
   description.innerHTML = `${response.data.weather[0].main}`;
   humidity.innerHTML = `${response.data.main.humidity}`;
   windSpeed.innerHTML = `${Math.round(response.data.wind.speed)}`;

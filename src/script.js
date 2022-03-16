@@ -1,11 +1,5 @@
-// api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
-//01a738ffcc406d9b10304ab407495deb
-
-// change city
-
-// change temp
+// change date & time
 function dateTime(timestamp) {
-
   let daysWeek = [
     "Sunday",
     "Monday",
@@ -14,7 +8,7 @@ function dateTime(timestamp) {
     "Thursday",
     "Friday",
     "Saturday",
-  ]
+  ];
 
   let months = [
     "Jan",
@@ -28,9 +22,7 @@ function dateTime(timestamp) {
     "Oct",
     "Nov",
     "Dec",
-    
-  ]
-
+  ];
 
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -38,14 +30,14 @@ function dateTime(timestamp) {
   let day = daysWeek[date.getDay()];
   let dateToday = date.getDate();
   let month = months[date.getMonth()];
-  let year =date.getFullYear();
-  if (minutes<10) {
-    minutes = `0${minutes}`}
-  if (hours<10) {
-    hours = `0${hours}`
+  let year = date.getFullYear();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
   }
-  
-  
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
   return `${day}, ${month} ${dateToday}, ${year} 🌎 Last Updated: ${hours}:${minutes}`;
 }
 
@@ -58,7 +50,8 @@ function getTemperature(response) {
   let windSpeed = document.querySelector("#wind-speed");
   let currentDateTime = document.querySelector("#date");
 
-  currentTemp.innerHTML = Math.round(response.data.main.temp);
+  celciusTemp = response.data.main.temp;
+  currentTemp.innerHTML = Math.round(celciusTemp);
   currentCity.innerHTML = `${response.data.name}`;
   country.innerHTML = `${response.data.sys.country}`;
   description.innerHTML = `${response.data.weather[0].main}`;
@@ -68,6 +61,25 @@ function getTemperature(response) {
 
   console.log(response);
 }
+// unit conversion - Temperature
+function showFTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temp");
+  let farenheitTemp = (celciusTemp * 9) / 5 + 32;
+  tempElement.innerHTML = Math.round(farenheitTemp);
+}
+let farenheitLink = document.querySelector("#farenheit");
+farenheitLink.addEventListener("click", showFTemp);
+
+function showCTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temp");
+  tempElement.innerHTML = Math.round(celciusTemp);
+}
+let celciusLink = document.querySelector("#celcius");
+celciusLink.addEventListener("click", showCTemp);
+
+let celciusTemp = null;
 
 // change city
 

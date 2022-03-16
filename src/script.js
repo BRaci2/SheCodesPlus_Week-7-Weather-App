@@ -65,6 +65,10 @@ function getTemperature(response) {
 function showFTemp(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#temp");
+
+  celciusLink.classList.remove("active");
+  farenheitLink.classList.add("active");
+
   let farenheitTemp = (celciusTemp * 9) / 5 + 32;
   tempElement.innerHTML = Math.round(farenheitTemp);
 }
@@ -75,6 +79,8 @@ function showCTemp(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#temp");
   tempElement.innerHTML = Math.round(celciusTemp);
+  farenheitLink.classList.remove("active");
+  celciusLink.classList.add("active");
 }
 let celciusLink = document.querySelector("#celcius");
 celciusLink.addEventListener("click", showCTemp);
@@ -88,7 +94,6 @@ function handleSubmit(event) {
   let cityInputElement = document.querySelector("#city-input");
   let cityText = document.querySelector("#city");
 
-  //
   let apiKey = `01a738ffcc406d9b10304ab407495deb`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInputElement.value}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(getTemperature);

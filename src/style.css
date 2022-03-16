@@ -16,12 +16,12 @@ body {
 .input-bar {
   padding: 25px;
   font-weight: 900;
-  color:black;
+  color: black;
   font-size: larger;
 }
 
 .city {
-  font-size:25px;
+  font-size: 25px;
 }
 
 .temp {
@@ -30,4 +30,14 @@ body {
 }
 .description {
   text-transform: uppercase;
+}
+
+.active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+
+.active:hover {
+  text-decoration: none;
 }

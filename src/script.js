@@ -49,6 +49,8 @@ function getTemperature(response) {
   let humidity = document.querySelector("#humidity");
   let windSpeed = document.querySelector("#wind-speed");
   let currentDateTime = document.querySelector("#date");
+  let weatherIcon = document.querySelector("#icon");
+  let iconCode = response.data.weather[0].icon;
 
   celciusTemp = response.data.main.temp;
   currentTemp.innerHTML = Math.round(celciusTemp);
@@ -58,6 +60,11 @@ function getTemperature(response) {
   humidity.innerHTML = `${response.data.main.humidity}`;
   windSpeed.innerHTML = `${Math.round(response.data.wind.speed)}`;
   currentDateTime.innerHTML = dateTime(response.data.dt * 1000);
+  weatherIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${iconCode}@2x.png`
+  );
+  weatherIcon.setAttribute("alt", response.data.weather[0].description);
 
   console.log(response);
 }
